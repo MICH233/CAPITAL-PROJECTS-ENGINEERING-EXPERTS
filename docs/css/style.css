@@ -2,25 +2,24 @@
    VARIABLES Y BASE
 ================================ */
 :root {
-    --azul-principal: #0d47a1;
-    --azul-oscuro: #143461;
-    --gris-oscuro: #1f2933;
-    --gris-claro: #f4f6f8;
+    --azul-principal: #022f5c;
     --blanco: #ffffff;
+    --negro: #000000;
+    --celeste: #BDDAFF;
 }
 /*-------------------*/
-* {/*todos los elementos*/
+* {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
 body {
-    background: white;
+    background: #fff;
     margin: 0;
     padding: 0;
     font-family: "Inter", sans-serif;
-    font-weight: 400;
+    font-weight: 350;
     color: #1f2933;
 }
 
@@ -31,13 +30,13 @@ a {
     text-decoration: none;
     color: inherit;
 }
-@media (max-width: 768px) {
+@media (max-width: 768px) {/*pantalla pequeña*/
     body {
         padding: 30px 15px;
     }
 }
 
-@keyframes fadeIn {
+@keyframes fadeIn {/*animacion*/
     from {
         opacity: 0;
     }
@@ -53,61 +52,60 @@ h1, h2 {
 .hero-contenido h3,
 #catalogo h3 {
     font-family: "Playfair Display", serif;
+    font-size: 25px;
     font-weight: 500;
     font-style: italic;
 }
 /* ===============================
-   HEADER / MENÚ
+   VARIABLES
+================================ */
+:root {
+    --azul-principal: #0d47a1;
+    --azul-oscuro: #143461;
+    --azul-petroleo: #0f172a;
+    --blanco: #ffffff;
+}
+
+/* ===============================
+   HEADER
 ================================ */
 .encabezado {
-    flex-wrap: wrap;
-    top: 0;
+    position: relative;
     width: 100%;
-    background-color: white;
-    z-index: 1000;
+    background-color: var(--blanco);
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 16px 20px;
-    min-height: 60px;
-    position: relative;
+    padding: 16px 80px;
+    z-index: 1000;
 }
+
 .logo {
     height: 90px;
     max-width: 260px;
 }
 
-@media (max-width: 800px) {
-    .logo {
-        height: 70px;
-        max-width: 280px;
-        margin-bottom: 50px;
-    }
-}
-
-/* NAV DESKTOP */
+/* ===============================
+   NAV DESKTOP
+================================ */
 #nav {
     display: flex;
     align-items: center;
-    gap: 55px;
+    gap: 80px;
     padding: 15px 24px;
     position: relative;
-    
 }
 
-/* línea base */
 #nav::after {
     content: "";
     position: absolute;
     bottom: 0;
     left: 40px;
     right: 40px;
-    height: 2px;
     background-color: rgba(13,71,161,0.35);
 }
 
-
-/* ventana-menu */
+/* LINKS */
 .enlace,
 .submenu-toggle {
     position: relative;
@@ -116,11 +114,12 @@ h1, h2 {
     font-weight: 600;
     text-decoration: none;
     font-family: "Inter", sans-serif;
-    transition: color 0.3s ease;
+    transition: color 0.4s ease;
     z-index: 1;
 }
-.enlace::before,
-.submenu-toggle::before {
+
+/* Hover desktop */
+.enlace::before, .submenu-toggle::before {
     content: "";
     position: absolute;
     left: 0;
@@ -131,7 +130,6 @@ h1, h2 {
     transition: height 0.3s ease;
     z-index: -1;
 }
-
 .enlace::after,
 .submenu-toggle::after {
     content: "";
@@ -140,26 +138,23 @@ h1, h2 {
     bottom: -16px;
     width: 0%;
     height: 3px;
-    background-color: #143461;
+    background-color: #1f2933;
     transition: width 0.3s ease;
 }
 
-.enlace:hover,
-.submenu:hover .submenu-toggle {
+.enlace:hover, .submenu:hover .submenu-toggle {
     color: #ffffff;
 }
-
-.enlace:hover::before,
-.submenu:hover .submenu-toggle::before {
+.enlace:hover::before, .submenu:hover .submenu-toggle::before {
     height: 100%;
 }
-
-.enlace:hover::after,
-.submenu:hover .submenu-toggle::after {
+.enlace:hover::after, .submenu:hover .submenu-toggle::after {
     width: 100%;
 }
 
-/* SUBMENU */
+/* ===============================
+   SUBMENU DESKTOP
+================================ */
 .submenu {
     position: relative;
 }
@@ -168,18 +163,14 @@ h1, h2 {
     position: absolute;
     top: 130%;
     left: 0;
-    background-color: #143461;
     width: 360px;
+    background-color: #143461;
     border-radius: 10px;
     box-shadow: 0 15px 35px rgba(0,0,0,0.25);
     display: none;
     max-height: 340px;
     overflow-y: auto;
     z-index: 9999;
-    font-family: "Inter", sans-serif;
-    font-optical-sizing: auto;
-    font-weight: 200;
-    font-style: normal;
 }
 
 .submenu:hover .submenu-items {
@@ -193,36 +184,121 @@ h1, h2 {
 .submenu-items a {
     display: block;
     padding: 14px 18px;
-    color: #ffffff;
+    color: var(--blanco);
     font-size: 14px;
     text-decoration: none;
-    transition: background 0.25s ease;
+    border-bottom: 1px solid rgba(255,255,255,0.12);
 }
 
 .submenu-items a:hover {
-    background-color: rgba(255,255,255,0.12);
+    background-color: rgba(255,255,255,0.15);
 }
 
-.submenu::after {
-    content: "";
-    position: absolute;
-    top: 100%;
-    left: 0;
-    width: 100%;
-    height: 12px;
-}
-
-
-/* BOTÓN HAMBURGUESA */
+/* ===============================
+   BOTÓN HAMBURGUESA
+================================ */
 .hamburguesa {
     display: none;
     font-size: 28px;
     background: none;
     border: none;
     cursor: pointer;
-    z-index: 1001;
-
+    color: var(--azul-principal);
+    z-index: 1100;
 }
+/*RESPONSIVE*/
+@media (max-width: 1024px) {
+
+    .hamburguesa {
+        display: block;
+        color: #143461;
+    }
+
+    /* CONTENEDOR MENÚ */
+    #nav {
+        position: absolute;
+        top: 100%;
+        left: 0;
+        width: 100%;
+        background-color: #143461;
+        flex-direction: column;
+        padding: 20px 0;
+        display: none;
+    }
+
+    #nav.activo {
+        display: flex;
+    }
+
+    /* LINKS PRINCIPALES */
+    .enlace,
+    .submenu-toggle {
+        font-family: "Inter", sans-serif;
+        font-weight: 400;              /* 👈 NO grueso */
+        font-size: 15.5px;
+        letter-spacing: 0.2px;
+        color: #ffffff;
+        padding: 14px 28px;
+        margin: 4px 20px;
+        border-radius: 8px;
+        transition: background-color 0.25s ease, color 0.25s ease;
+    }
+
+    /* HOVER LIMPIO */
+    .enlace:hover,
+    .submenu-toggle:hover {
+        background-color: #ffffff;
+        color:#143461;
+    }
+
+    /* quitar efectos desktop */
+    .enlace::before,
+    .enlace::after,
+    .submenu-toggle::before,
+    .submenu-toggle::after {
+        display: none;
+    }
+
+    /* SUBMENU SERVICIOS */
+    .submenu-items {
+        position: static;
+        display: none;
+        background-color: black ;
+        margin: 6px 20px 10px;
+        padding: 6px 0;
+        border-radius: 10px;
+    }
+
+    .submenu.activo .submenu-items {
+        display: block;
+    }
+
+    .submenu-items a {
+        font-family: "Inter", sans-serif;
+        font-weight: 350;
+        font-size: 14.5px;
+        color: #e5e7eb;
+        padding: 12px 32px;
+        transition: background-color 0.25s ease, color 0.25s ease;
+    }
+
+    .submenu-items a:hover {
+        background-color:
+            #4A586B;
+        color: WHITE;
+    }
+}
+
+
+/* ===============================
+   LOGO RESPONSIVE
+================================ */
+@media (max-width: 800px) {
+    .logo {
+        height: 70px;
+    }
+}
+
 
 /* ===============================
    HERO
@@ -230,7 +306,7 @@ h1, h2 {
 .hero {
     margin-top: 0;
     min-height: 100vh;
-    background-image: url("../imagenes/menu/MENU.jpeg");
+    background-image: url("../imagenes/menu/menu.jpeg");
     background-size: cover;
     background-position: center;
     position: relative;
@@ -250,7 +326,7 @@ h1, h2 {
 .hero-contenido {
     position: relative;
     max-width: 900px;
-    color: #DEEAFF;
+    color:#D4E6FA;
 }
 @media (min-width: 1024px) {
     .hero-contenido {
@@ -260,19 +336,29 @@ h1, h2 {
 .hero-contenido h1 {
     font-family: "Playfair Display", serif;
     font-optical-sizing: auto;
-    font-weight: 1000;
+    font-weight: 800;
     font-style: normal;
+    font-size: clamp(42px, 6vw, 68px);
+    line-height: 1.1;
+    letter-spacing: 0.5px;
 }
 
 .hero-contenido h3 {
-    margin-top: 14px;
-    margin-bottom: 18px;
+    margin-top: 18px;
+    margin-bottom: 22px;
+    font-size: clamp(20px, 2.5vw, 28px);
+    font-weight: 500;
+    opacity: 0.95;
+}
+
+
+.hero-contenido p {
+    font-size: 20px;
+    line-height: 1.6;
+    max-width: 700px;
     opacity: 0.9;
 }
 
-.hero-contenido p {
-    max-width: 480px;
-}
 
 #nosotros,
 #servicios,
@@ -284,9 +370,26 @@ h1, h2 {
    NOSOTROS
 ================================ */
 #nosotros {
-    padding: 80px 40px;
+    padding: 70px 40px;
     background-color: var(--gris-claro);
 }
+#nosotros h2 {
+    font-family: "Playfair Display", serif;
+    font-size: clamp(32px, 4vw, 44px);
+    font-weight: 600;
+    text-align: left;
+    margin-bottom: 24px;
+    color: #1f2933;
+}
+#nosotros h2::after {
+    content: "";
+    display: block;
+    width: 80px;
+    height: 3px;
+    background-color: var(--azul-principal);
+    margin-top: 14px;
+}
+
 .tabla {
     width: 100%;
     background: white;
@@ -297,6 +400,8 @@ h1, h2 {
     border-radius: 12px;
     box-shadow: none;
     background: transparent;
+    max-width: 1300px;
+    margin: 0 auto;
 }
 .tabla tr {
     background: #fff;
@@ -309,65 +414,76 @@ h1, h2 {
 }
 
 .tabla_tdImg {
+    width: 50%;
+    padding: 0 30px 0 0;
     display: flex;
-    justify-content: flex-end;
-    width: 35%;
-    padding: 10px;
-    vertical-align: middle;
-    box-shadow:none;
-    border-radius: 5px;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-    transform-origin: center;
+    justify-content: center;
+    align-items: center;
 }
 
-.tabla_tdImg:hover {
-    transform: scale(1.05);
-    box-shadow: 0 8px 20px rgba(0,0,0,0.4);
-}
 .img-nosotros {
     width: 100%;
-    max-width: 320px;   /* CLAVE */
-    border-radius: 14px;
-    display: block;
-    margin-left: auto; /* la manda a la derecha */
-    box-shadow: 0 12px 30px rgba(0,0,0,0.18);
+    max-width: none;            /* QUITA EL LÍMITE */
+    height: 480px;              /* ALTURA REAL */
+    object-fit: cover;          /* SE VE PROFESIONAL */
+    border-radius: 18px;
+    box-shadow: 0 18px 40px rgba(0,0,0,0.2);
 }
 
 .tdTxt {
-    width: 65%;
+    width: 50%;
     padding-left: 40px;
-    color: #1f2933;
-    font-family: "Inter", sans-serif;
-    font-size: 15.5px;
-    line-height: 1.7;
+    font-size: 16px;
+    line-height: 1.85;
 }
+@media (max-width: 1024px) {
+    .tabla_tdImg {
+        width: 100%;
+        padding: 0;
+        margin-bottom: 30px;
+    }
 
+    .img-nosotros {
+        height: 420px;
+    }
+
+    .tdTxt {
+        width: 100%;
+        padding: 0;
+    }
+}
 
 
 @media (max-width: 768px) {
-    .tabla {
-        display: block;
-        background: white;
-    }
-    .tabla tr {
-        display: block;
-    }
-    .tabla td {
-        display: block;
-        width: 100%;
-        padding: 12px 4px;
-    }
     .tabla_tdImg {
         width: 100%;
-        margin-bottom: 12px;
-        box-shadow: none;
-        border-radius: 8px;
+        padding: 0;
+        margin-bottom: 24px;
     }
+
     .tdTxt {
         width: 100%;
-        text-align: right;
+        padding: 0;
+        text-align: left;
+    }
+    #nosotros {
+        padding: 60px 20px;
+    }
+    #nosotros h2 {
+        text-align: center;
+    }
+
+    #nosotros h2::after {
+        margin-left: auto;
+        margin-right: auto;
+    }
+    .img-nosotros {
+        max-width: 340px;
+        height: 300px;
+        border-radius: 14px;
     }
 }
+
 
 
 /* ===============================
@@ -588,22 +704,36 @@ h2::after {
    FOOTER
 ================================ */
 .pie-pagina {
-    background:  linear-gradient(to right, #e3f2fd, #ffffff);
-    color: black;
-    padding: 30px 0;
+    background: #ffffff;
+    color: #1f2933;
+    padding: 40px 0;
+    border-top: 1px solid #e5e7eb;
 }
 
 .contenedor-footer {
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-start;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 40px;
     width: 90%;
     max-width: 1200px;
     margin: auto;
+    align-items: start;
 }
+
 
 .logo-footer {
     text-align: left;
+}
+.logo-footer img {
+    max-width: 140px;
+    margin-bottom: 10px;
+}
+
+.logo-footer p {
+    font-size: 14px;
+    color: #6b7280;
+    line-height: 1.5;
+    margin: 0;
 }
 .columna-footer {
     text-align: center;
@@ -613,8 +743,24 @@ h2::after {
 }
 .columna-footer h2 {
     font-family: "Playfair Display", serif;
-    margin-bottom: 15px;
+    margin-bottom: 12px;
+     font-size: 16px;
+    font-weight: 600;
+     
 }
+
+
+.footer-contacto a:hover {
+    color: #0d47a1;
+}
+@media (max-width: 768px) {
+    .contenedor-footer {
+        grid-template-columns: 1fr;
+        text-align: center;
+        gap: 25px;
+    }
+}
+
 /* ===============================
    RESPONSIVE (CLAVE)
 ================================ */
@@ -680,8 +826,15 @@ hr{
         var(--azul-oscuro) 80%,
         transparent 100%
         );
+    width: 100%;
+    height: 2px;
+    background-color: #abcbff;
+    border: none !important;
+    display: block !important;
+    margin: 60px 0;
 }
 html, body {
     width: 100%;
     overflow-x: hidden;
 }
+

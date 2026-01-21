@@ -307,6 +307,8 @@ h1, h2 {
     align-items: center;
     justify-content: center; /* CAMBIO CLAVE */
     padding: 40px 30px;
+     background-repeat: no-repeat;
+    background-attachment: scroll;
 }
 
 .hero::before {
@@ -414,12 +416,13 @@ h1, h2 {
 
 .img-nosotros {
     width: 100%;
-    max-width: none;            /* QUITA EL LÍMITE */
-    height: 480px;              /* ALTURA REAL */
-    object-fit: cover;          /* SE VE PROFESIONAL */
+    max-width: 520px;          /* controla el tamaño */
+    aspect-ratio: 1 / 1;      /* mantiene formato cuadrado */
+    object-fit: cover;        /* recorta sin deformar */
     border-radius: 18px;
     box-shadow: 0 18px 40px rgba(0,0,0,0.2);
 }
+
 
 .tdTxt {
     width: 50%;
@@ -469,10 +472,10 @@ h1, h2 {
         margin-right: auto;
     }
     .img-nosotros {
-        max-width: 340px;
-        height: 300px;
-        border-radius: 14px;
-    }
+    max-width: 320px;
+    aspect-ratio: 1 / 1;
+}
+
 }
 
 

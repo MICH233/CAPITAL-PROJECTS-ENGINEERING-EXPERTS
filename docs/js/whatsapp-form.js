@@ -17,7 +17,7 @@ document.getElementById("formSolicitud").addEventListener("submit", function (e)
 🛠️ *Servicio solicitado:* ${servicio}
 📝 *Detalle del mensaje:*${descripcion}`;
 
-    const numeroWhatsApp = "51907892266"; 
+    const numeroWhatsApp = "51954055539"; 
 
     const url = `https://wa.me/${numeroWhatsApp}?text=${encodeURIComponent(mensaje)}`;
 
